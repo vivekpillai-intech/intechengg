@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intech Group | Your Fabrication Solution</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Bebas+Neue&family=Barlow:wght@600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0a2e5c;
+            --accent: #1e5bb0;
+            --gold: #c9a44a;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.95);
+            --transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: #1a1a1a; line-height: 1.6; background-color: #f8f9fb; overflow-x: hidden; }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed; top: 0; width: 100%; height: 95px;
+            background: var(--glass); backdrop-filter: blur(15px);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 5%; z-index: 1000; border-bottom: 3px solid var(--primary);
+        }
+        .logo-wrap { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        /* Cleaned logo area: removed alt text if image fails to load */
+        .logo-img { height: 70px; width: auto; display: block; }
+        .logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; color: var(--primary); line-height: 0.9; letter-spacing: 1px; }
+        .logo-text span { display: block; font-family: 'Inter', sans-serif; font-size: 0.75rem; letter-spacing: 2px; color: var(--accent); margin-top: 5px; font-weight: 700; }
+
+        .nav-links { display: flex; list-style: none; gap: 25px; }
+        .nav-links a { text-decoration: none; color: var(--primary); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+
+        /* --- Hero: High-End Industrial Background --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(7, 20, 40, 0.75), rgba(7, 20, 40, 0.75)), 
+                        url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover; background-position: center; background-attachment: fixed;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; 
+            text-align: center; color: var(--white); padding: 0 10%;
+        }
+        .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 10vw, 6rem); margin-bottom: 20px; line-height: 1; letter-spacing: 2px; }
+        .hero p { font-size: 1.2rem; margin-bottom: 40px; max-width: 850px; opacity: 0.9; font-weight: 300; }
+        
+        .btn { 
+            padding: 18px 50px; background: var(--gold); color: var(--primary); 
+            text-decoration: none; font-weight: 800; border-radius: 2px; 
+            transition: var(--transition); border: 2px solid var(--gold);
+            text-transform: uppercase; letter-spacing: 2px; font-family: 'Barlow';
+        }
+        .btn:hover { background: transparent; color: white; border-color: white; transform: translateY(-5px); }
+
+        /* --- Sections --- */
+        section { padding: 120px 10%; position: relative; }
+        .section-title { text-align: center; margin-bottom: 80px; }
+        .section-title h2 { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; color: var(--primary); letter-spacing: 1px; }
+        .section-title .accent-line { width: 60px; height: 5px; background: var(--gold); margin: 15px auto; }
+
+        /* --- About & Timeline --- */
+        .about-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: start; }
+        .timeline { border-left: 3px solid var(--gold); padding-left: 35px; margin-top: 20px; }
+        .timeline-item { margin-bottom: 40px; position: relative; }
+        .timeline-item::before { content: ''; width: 14px; height: 14px; background: var(--primary); position: absolute; left: -44px; top: 6px; border-radius: 50%; border: 3px solid var(--gold); }
+        .timeline-year { font-family: 'Bebas Neue'; color: var(--gold); font-size: 1.8rem; line-height: 1; margin-bottom: 5px; }
+
+        /* --- Vision/Mission --- */
+        .vm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 50px; }
+        .vm-card { background: var(--primary); color: white; padding: 40px; border-radius: 4px; transition: 0.3s; }
+        .vm-card i { font-size: 2rem; color: var(--gold); margin-bottom: 15px; }
+        .vm-card h3 { font-family: 'Bebas Neue'; font-size: 1.8rem; letter-spacing: 1px; margin-bottom: 10px; }
+
+        /* --- Infrastructure --- */
+        .infra-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .infra-card { background: var(--white); padding: 50px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-bottom: 5px solid var(--gold); }
+        .infra-card h4 { font-family: 'Bebas Neue'; font-size: 2rem; margin-bottom: 15px; color: var(--primary); }
+
+        /* --- Products --- */
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .product-item { background: white; padding: 25px; border-radius: 4px; display: flex; align-items: center; gap: 20px; transition: 0.3s; border: 1px solid #eee; }
+        .product-item:hover { border-color: var(--gold); box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
+        .product-item i { color: var(--accent); font-size: 1.2rem; }
+
+        /* --- Carousel --- */
+        .carousel-outer { position: relative; overflow: hidden; padding: 60px 0; background: #fff; border-radius: 4px; }
+        .carousel-track { display: flex; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
+        .client-slide { min-width: 33.33%; padding: 15px; text-align: center; flex-shrink: 0; }
+        .client-name { background: #fdfdfd; padding: 45px 20px; border-radius: 4px; font-weight: 700; color: var(--primary); border: 1px solid #eee; font-family: 'Barlow'; font-size: 1.1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
+        .dots-container { display: flex; justify-content: center; gap: 12px; margin-top: 30px; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; background: #ddd; cursor: pointer; transition: 0.3s; }
+        .dot.active { background: var(--primary); width: 30px; border-radius: 10px; }
+
+        /* --- Footer --- */
+        footer { background: #071428; color: white; padding: 100px 10% 40px; }
+        .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 60px; }
+        .footer-head { font-family: 'Bebas Neue'; font-size: 1.8rem; color: var(--gold); margin-bottom: 25px; letter-spacing: 1px; }
+        .contact-item { display: flex; gap: 15px; margin-bottom: 20px; align-items: flex-start; }
+        .contact-item i { color: var(--gold); font-size: 1.1rem; margin-top: 5px; }
+
+        @media (max-width: 968px) {
+            .about-grid, .footer-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .client-slide { min-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#home" class="logo-wrap">
+            <img src="1661060830267-removebg-preview.png" alt="" class="logo-img">
+            <div class="logo-text">INTECH GROUP<span>YOUR FABRICATION SOLUTION</span></div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#infrastructure">Infrastructure</a></li>
+            <li><a href="#products">Capabilities</a></li>
+            <li><a href="#clients">Clients</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <h1>PRECISION DRIVEN.<br>QUALITY BUILT.</h1>
+        <p>A trusted name in heavy fabrication and transformer components since 2007. We translate complex engineering designs into high-performance structural reality.</p>
+        <a href="#contact" class="btn">Enquire Now</a>
+    </section>
+
+    <section id="about">
+        <div class="about-grid">
+            <div>
+                <div class="section-title" style="text-align: left;">
+                    <h2>Our Legacy</h2>
+                    <div class="accent-line" style="margin: 15px 0;"></div>
+                </div>
+                <p style="font-size: 1.1rem; margin-bottom: 30px; opacity: 0.8;">Intech Group is a premier engineering cluster delivering precision-engineered components for the global power industry. Operating through dedicated facilities in Ahmedabad, we provide a seamless extension to our clients' manufacturing operations.</p>
+                
+                <div class="vm-grid">
+                    <div class="vm-card">
+                        <i class="fas fa-eye"></i>
+                        <h3>OUR VISION</h3>
+                        <p style="font-size: 0.9rem; opacity: 0.8;">To be a global benchmark for reliability in heavy fabrication, recognized for engineering precision and lasting trust.</p>
+                    </div>
+                    <div class="vm-card">
+                        <i class="fas fa-bullseye"></i>
+                        <h3>OUR MISSION</h3>
+                        <p style="font-size: 0.9rem; opacity: 0.8;">To consistently deliver fabrication solutions that exceed technical specifications while maintaining rigorous safety and quality standards.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2007</div>
+                    <p style="font-size: 0.95rem;"><strong>Foundation:</strong> Intech Group established in Ahmedabad to serve the core power and electrical industry.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2015</div>
+                    <p style="font-size: 0.95rem;"><strong>Expansion:</strong> Major infrastructure upgrade with the commissioning of our second facility at Changodar.</p>
+                </div>
+ </div>
+               
+    </section>
+
+    <section id="infrastructure" style="background: #f0f3f7;">
+        <div class="section-title">
+            <h2>Manufacturing Units</h2>
+            <div class="accent-line"></div>
+        </div>
+        <div class="infra-grid">
+            <div class="infra-card">
+                <h4>Intech Engineering</h4>
+                <p style="color:var(--accent); font-weight:700; margin-bottom:20px; font-size: 0.8rem; letter-spacing: 1px;">CHANGODAR, AHMEDABAD</p>
+                <ul style="list-style:none; font-size: 0.9rem;">
+                    <li style="display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid #eee;"><span>Area Under Roof</span> <strong>6,000 sq ft</strong></li>
+                    <li style="display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid #eee;"><span>Hook Height</span> <strong>6 mtrs</strong></li>
+                    <li style="display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid #eee;"><span>EOT Cranes</span> <strong>10T, 5T, 2T</strong></li>
+                </ul>
+            </div>
+            <div class="infra-card">
+                <h4>Intech Engineers</h4>
+                <p style="color:var(--accent); font-weight:700; margin-bottom:20px; font-size: 0.8rem; letter-spacing: 1px;">KATHWADA GIDC, AHMEDABAD</p>
+                <ul style="list-style:none; font-size: 0.9rem;">
+                    <li style="display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid #eee;"><span>Area Under Roof</span> <strong>19,800 sq ft</strong></li>
+                    <li style="display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid #eee;"><span>Hook Height</span> <strong>9 mtrs</strong></li>
+                    <li style="display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid #eee;"><span>EOT Cranes</span> <strong>15T, 10Tx3, 9T</strong></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="products">
+        <div class="section-title">
+            <h2>Capabilities</h2>
+            <div class="accent-line"></div>
+        </div>
+        <div class="product-grid">
+            <div class="product-item"><i class="fas fa-microchip"></i> Transformer Tanks (Up to 500MVA)</div>
+            <div class="product-item"><i class="fas fa-tools"></i> Coil Winding Machines</div>
+            <div class="product-item"><i class="fas fa-gas-pump"></i> Oil Storage Tanks</div>
+            <div class="product-item"><i class="fas fa-layer-group"></i> Core Clamps & Core Tables</div>
+            <div class="product-item"><i class="fas fa-sync"></i> Roller Assemblies</div>
+            <div class="product-item"><i class="fas fa-industry"></i> Induction Furnace Bodies</div>
+            <div class="product-item"><i class="fas fa-wind"></i> Industrial Ovens</div>
+            <div class="product-item"><i class="fas fa-snowflake"></i> Condensers & Evaporators</div>
+            <div class="product-item"><i class="fas fa-shield-alt"></i> SS and MS Canopies</div>
+            <div class="product-item"><i class="fas fa-pills"></i> Precision Piping (MS/SS)</div>
+            <div class="product-item"><i class="fas fa-building"></i> Structural Fabrication Jobs</div>
+            <div class="product-item"><i class="fas fa-box"></i> Vacuum Plants Components</div>
+        </div>
+    </section>
+
+    <section id="clients" style="background: #fdfdfd;">
+        <div class="section-title">
+            <h2>Valued Partners</h2>
+            <div class="accent-line"></div>
+        </div>
+        <div class="carousel-outer">
+            <div class="carousel-track" id="track">
+                <div class="client-slide"><div class="client-name">Transformers & Rectifiers (India) Ltd.</div></div>
+                <div class="client-slide"><div class="client-name">Pennsylvania Transformer Technology</div></div>
+                <div class="client-slide"><div class="client-name">ORNET Transformers Pvt. Ltd.</div></div>
+                <div class="client-slide"><div class="client-name">Servokon Systems</div></div>
+                <div class="client-slide"><div class="client-name">Inductotherm Group</div></div>
+                <div class="client-slide"><div class="client-name">SAVAS Engineering Co. Pvt. Ltd.</div></div>
+                <div class="client-slide"><div class="client-name">Atlanta Electricals</div></div>
+                <div class="client-slide"><div class="client-name">Technology Excellence Group (TEG)</div></div>
+                <div class="client-slide"><div class="client-name">Transpares Limited</div></div>
+                <div class="client-slide"><div class="client-name">Navkar Transcore Pvt. Ltd.</div></div>
+                <div class="client-slide"><div class="client-name">Harsha Engineers</div></div>
+                <div class="client-slide"><div class="client-name">Vardhman Stampings Pvt. Ltd.</div></div>
+            </div>
+            <div class="dots-container" id="dots"></div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-grid">
+            <div>
+                <h3 class="footer-head" style="color: #fff;">INTECH GROUP</h3>
+                <p style="opacity: 0.6; font-size: 0.9rem;">Your premier partner for complex engineering and heavy fabrication solutions. Precision at the core of every project.</p>
+                <div style="margin-top: 30px;">
+                    <a href="https://in.linkedin.com/company/intechengineering" target="_blank" style="color: white; font-size: 1.8rem;"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="footer-head">LOCATIONS</h4>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p style="font-size: 0.85rem; opacity: 0.8;"><strong>Unit 1:</strong> Plot No. 427, Phase-II, GIDC Kathwada, Ahmedabad - 382430</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p style="font-size: 0.85rem; opacity: 0.8;"><strong>Unit 2:</strong> Survey No. 405, Sarkhej-Bavla Highway, Changodar, Ahmedabad</p>
+                </div>
+                <a href="https://share.google/JwgF02HAj7gpvgojZ" target="_blank" style="color:var(--gold); text-decoration:none; font-weight:700; font-size: 0.8rem;">
+                    <i class="fas fa-directions"></i> FIND US ON MAPS
+                </a>
+            </div>
+            <div>
+                <h4 class="footer-head">CONTACT US</h4>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <p style="font-size: 0.85rem; opacity: 0.8;">+91 96871 12123<br>+91 97248 78717<br>+91 99984 60636</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <p style="font-size: 0.85rem; opacity: 0.8;">intech_engineers@yahoo.co.in</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-globe"></i>
+                    <p style="font-size: 0.85rem; opacity: 0.8;">www.intecheng.in</p>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 80px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); opacity: 0.4; font-size: 0.75rem;">
+            &copy; 2026 Intech Group. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Carousel Logic
+        const track = document.getElementById('track');
+        const dotsContainer = document.getElementById('dots');
+        const slides = document.querySelectorAll('.client-slide');
+        let index = 0;
+        const visible = window.innerWidth > 968 ? 3 : 1;
+        const steps = slides.length - (visible - 1);
+
+        for(let i=0; i < steps; i++) {
+            const d = document.createElement('div');
+            d.classList.add('dot');
+            if(i===0) d.classList.add('active');
+            d.addEventListener('click', () => { index = i; update(); clearInterval(auto); });
+            dotsContainer.appendChild(d);
+        }
+
+        function update() {
+            const move = window.innerWidth > 968 ? 33.33 : 100;
+            track.style.transform = `translateX(-${index * move}%)`;
+            document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === index));
+        }
+
+        let auto = setInterval(() => { index = (index + 1) % steps; update(); }, 4500);
+
+        // Simple Fade-In On Scroll
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if(e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section > div, .infra-card').forEach(el => {
+            el.style.opacity = '0'; el.style.transform = 'translateY(30px)'; el.style.transition = '0.8s ease-out';
+            obs.observe(el);
+        });
+    </script>
+</body>
+</html>
